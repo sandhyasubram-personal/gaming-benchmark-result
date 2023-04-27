@@ -1,0 +1,460 @@
+{
+  "runStart": "2020-10-28T16:03:00+02:00",
+  "runEnd": "2020-10-28T16:10:51+02:00",
+  "duration": null,
+  "uiVersion": "v2.14.7042 64",
+  "systemInfoVersion": "v5.32.862",
+  "results": [
+    {
+      "testName": "TIME_SPY_EXTREME",
+      "testVersion": "v1.2",
+      "scores": {
+        "overallScore": {
+          "type": "TIME_SPY_OVERALL_SCORE_X",
+          "score": 3430.0,
+          "uiValue": "3 430",
+          "unit": ""
+        },
+        "componentScores": [
+          {
+            "type": "TIME_SPY_GRAPHICS_SCORE_X",
+            "baseType": "GRAPHICS_SCORE",
+            "score": 3541.0,
+            "uiValue": "3 541",
+            "unit": "",
+            "subScores": [
+              {
+                "uiValue": "22.46",
+                "baseType": "GT_1",
+                "score": 22.464676,
+                "unit": "fps",
+                "subScores": [],
+                "resultType": null,
+                "type": "TIME_SPY_GT1_X"
+              },
+              {
+                "uiValue": "20.81",
+                "baseType": "GT_2",
+                "score": 20.811609,
+                "unit": "fps",
+                "subScores": [],
+                "resultType": null,
+                "type": "TIME_SPY_GT2_X"
+              }
+            ]
+          },
+          {
+            "type": "TIME_SPY_CPU_SCORE_X",
+            "baseType": "CPU_SCORE",
+            "score": 2915.0,
+            "uiValue": "2 915",
+            "unit": "",
+            "subScores": [
+              {
+                "uiValue": "120.1",
+                "baseType": "CPU_TEST_TIME",
+                "score": 120.061537,
+                "unit": "ms",
+                "subScores": [],
+                "resultType": null,
+                "type": "TIME_SPY_CPU_SECTION0_X"
+              }
+            ]
+          }
+        ]
+      },
+      "device": "",
+      "settings": [
+        {
+          "GPU_NAME": "NVIDIA GeForce RTX 2060",
+          "group": "rendering_quality"
+        },
+        {
+          "DISPLAY_NAME": "\\\\.\\DISPLAY1 Generic PnP Monitor",
+          "group": "rendering_quality"
+        },
+        {
+          "GPU_CONNECTED_TO_DISPLAY": "true",
+          "group": "rendering_quality"
+        }
+      ]
+    }
+  ],
+  "systemInfo": {
+    "os": {
+      "version": "10.0.19041",
+      "osVersion": "WINDOWS_10",
+      "osBitness": "BIT64",
+      "specification": "Windows 10 Enterprise 64-bit (10.0.19041)"
+    },
+    "motherboard": {
+      "name": "ASUSTeK COMPUTER INC. ROG STRIX Z390-H GAMING",
+      "biosVendor": "American Megatrends Inc.",
+      "biosVersion": "2417",
+      "biosDate": "06/03/2019",
+      "mainboardVendor": "ASUSTeK COMPUTER INC.",
+      "mainboardModel": "ROG STRIX Z390-H GAMING",
+      "systemManufacturer": "System manufacturer",
+      "systemProductName": "System Product Name",
+      "systemVersion": "System Version",
+      "systemSerialNumber": "System Serial Number",
+      "systemUuid": "{3739B863-2B72-1C40-0A1A-40B0760DC04E}",
+      "chassisManufacturer": "Default string",
+      "chassisType": "Desktop",
+      "chassisSerialNumber": "{3739B863-2B72-1C40-0A1A-40B0760DC04E}",
+      "northBridgeVendor": "Intel",
+      "northBridgeModel": "Coffee Lake",
+      "northBridgeRevision": "0A",
+      "southBridgeVendor": "Intel",
+      "southBridgeModel": "Z390",
+      "southBridgeRevision": "10",
+      "memory": {
+        "slotCount": 4,
+        "slotsInUse": 2,
+        "slotMap": 0,
+        "moduleMaxSize": 0,
+        "totalSizeMb": 16384,
+        "clockFrequencyMhz": 1600,
+        "casLatency": 16.0,
+        "rasToCasDelay": 18,
+        "rasPercharge": 18,
+        "tras": 38,
+        "trc": -1,
+        "commandRate": 2,
+        "memoryDevices": [
+          {
+            "moduleSpecification": "DDR4-2132",
+            "maxTransferRateMbs": 25600,
+            "marketingFrequencyMhz": "3200",
+            "maxFrequencyMhz": 1066,
+            "manufacturer": "G.Skill",
+            "sizeMb": 8192,
+            "moduleType": "DDR4"
+          },
+          {
+            "sizeMb": 8192
+          }
+        ],
+        "type": "DDR4"
+      },
+      "northBridgeName": "Intel Coffee Lake",
+      "southBridgeName": "Intel Z390"
+    },
+    "gpu": [
+      {
+        "name": "NVIDIA GeForce RTX 2060",
+        "codeName": "TU106",
+        "manufacturingProcess": "12",
+        "busInterface": "PCIe x16 3.0 ",
+        "pciDeviceId": {
+          "deviceId": 7944,
+          "vendorId": 4318,
+          "subDeviceId": 14288,
+          "subVendorId": 5208,
+          "revision": 161,
+          "highLuid": 0,
+          "lowLuid": 0,
+          "subvendorName": "Gigabyte",
+          "vendorName": "NVIDIA"
+        },
+        "clockSpeed": {
+          "gpu": {
+            "currentMhz": 1920.0,
+            "defaultMhz": 1365.0,
+            "averageMhz": 1853.0
+          },
+          "memory": {
+            "currentMhz": 1750.0,
+            "defaultMhz": 1750.0,
+            "averageMhz": 1738.0
+          },
+          "boost": {
+            "currentMhz": 1770.0,
+            "defaultMhz": 1770.0,
+            "averageMhz": 0.0
+          }
+        },
+        "memory": {
+          "memoryAmountMb": 6144,
+          "memoryType": "GDDR6",
+          "availableVram": 0
+        },
+        "driverInfo": {
+          "driverName": "nvlddmkm",
+          "driverVersion": "27.21.14.5671",
+          "driverDate": "2020-09-30",
+          "driverAccepted": true
+        },
+        "featureLevel": {
+          "dxFeatureLevel": "D3D_FEATURE_LEVEL_11_0"
+        },
+        "displays": [
+          {
+            "deviceName": "\\\\.\\DISPLAY1",
+            "deviceString": "Generic PnP Monitor",
+            "deviceId": "\\\\?\\DISPLAY#DELA07A#5&1793aaf4&5&UID4358#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}",
+            "resolution": "1920 × 1200, 100% DPI scaling",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "width": 1920,
+              "height": 1200
+            },
+            "rotation": "ROTATION_IDENTITY",
+            "attachedToDesktop": true,
+            "resolutions": [
+              "640 × 480",
+              "720 × 480",
+              "720 × 576",
+              "800 × 600",
+              "1024 × 768",
+              "1152 × 864",
+              "1280 × 720",
+              "1280 × 768",
+              "1280 × 800",
+              "1280 × 960",
+              "1280 × 1024",
+              "1360 × 768",
+              "1366 × 768",
+              "1600 × 900",
+              "1600 × 1024",
+              "1600 × 1200",
+              "1680 × 1050",
+              "1920 × 1080",
+              "1920 × 1200"
+            ]
+          }
+        ],
+        "averageTemperature": 71,
+        "gpuType": "DISCRETE",
+        "wddm": 0,
+        "luid": 39302
+      }
+    ],
+    "storage": [
+      {
+        "driveName": "Samsung SSD 860 EVO 500GB",
+        "driveModel": "Samsung SSD 860 EVO 500GB",
+        "capacityMb": 476937.531752448,
+        "driveType": "SSD"
+      }
+    ],
+    "cpu": [
+      {
+        "coreCount": 6,
+        "threadCount": 6,
+        "name": "Intel Core i5-9600K",
+        "processorCodeName": "Coffee Lake",
+        "modelIdentifier": "17039363",
+        "processorPackage": "Socket 1151 LGA",
+        "voltageId": "0.609497",
+        "manufacturingProcessNm": 14,
+        "averageFrequencyMhz": "4327",
+        "averageTemperature": "57",
+        "virtualTechnologyCapable": true,
+        "instructionSets": [
+          "MMX",
+          "SSE",
+          "SSE2",
+          "SSE3",
+          "SSSE3",
+          "SSE41",
+          "SSE42",
+          "X86_64",
+          "NX",
+          "VMX"
+        ],
+        "cores": [
+          {
+            "threadCount": 1,
+            "frequency": {
+              "currentMhz": 800.1920166015625,
+              "defaultMhz": 3700.0,
+              "averageMhz": 0.0
+            },
+            "temperature": 1.0
+          },
+          {
+            "threadCount": 1,
+            "frequency": {
+              "currentMhz": 800.1920166015625,
+              "defaultMhz": 3700.0,
+              "averageMhz": 0.0
+            },
+            "temperature": 1.0
+          },
+          {
+            "threadCount": 1,
+            "frequency": {
+              "currentMhz": 800.1920166015625,
+              "defaultMhz": 3700.0,
+              "averageMhz": 0.0
+            },
+            "temperature": 1.0
+          },
+          {
+            "threadCount": 1,
+            "frequency": {
+              "currentMhz": 800.1920166015625,
+              "defaultMhz": 3700.0,
+              "averageMhz": 0.0
+            },
+            "temperature": 1.0
+          },
+          {
+            "threadCount": 1,
+            "frequency": {
+              "currentMhz": 800.1920166015625,
+              "defaultMhz": 3700.0,
+              "averageMhz": 0.0
+            },
+            "temperature": 1.0
+          },
+          {
+            "threadCount": 1,
+            "frequency": {
+              "currentMhz": 800.1920166015625,
+              "defaultMhz": 3700.0,
+              "averageMhz": 0.0
+            },
+            "temperature": 1.0
+          }
+        ],
+        "caches": [
+          {
+            "level": 1,
+            "type": "DATA",
+            "count": 6,
+            "sizeKb": 32,
+            "totalSizeKb": 192,
+            "associativity": 8,
+            "lineSizeBytes": 64
+          },
+          {
+            "level": 1,
+            "type": "INSTRUCTION",
+            "count": 6,
+            "sizeKb": 32,
+            "totalSizeKb": 192,
+            "associativity": 8,
+            "lineSizeBytes": 64
+          },
+          {
+            "level": 2,
+            "type": "UNIFIED",
+            "count": 6,
+            "sizeKb": 256,
+            "totalSizeKb": 1536,
+            "associativity": 4,
+            "lineSizeBytes": 64
+          },
+          {
+            "level": 3,
+            "type": "UNIFIED",
+            "count": 1,
+            "sizeKb": 9216,
+            "totalSizeKb": 9216,
+            "associativity": 12,
+            "lineSizeBytes": 64
+          }
+        ],
+        "registryIds": {
+          "eax0": 22,
+          "ebx0": 1970169159,
+          "ecx0": 1818588270,
+          "edx0": 1231384169,
+          "eax1": 591596,
+          "ebx1": 1050624,
+          "ecx1": 2147154943,
+          "edx1": -1075053569,
+          "eax2": 1979933441,
+          "ebx2": 15775487,
+          "ecx2": 0,
+          "edx2": 12779520,
+          "eax3": 0,
+          "ebx3": 0,
+          "ecx3": 0,
+          "edx3": 0
+        },
+        "extendedRegistryIds": {
+          "eax0": -2147483640,
+          "ebx0": 0,
+          "ecx0": 0,
+          "edx0": 0,
+          "eax1": 0,
+          "ebx1": 0,
+          "ecx1": 289,
+          "edx1": 739246080,
+          "eax2": 1702129225,
+          "ebx2": 693250156,
+          "ecx2": 1919894304,
+          "edx2": 1297360997,
+          "eax3": 896081961,
+          "ebx3": 808859949,
+          "ecx3": 1126189872,
+          "edx3": 1075860816,
+          "eax4": 925774624,
+          "ebx4": 2051557168,
+          "ecx4": 0,
+          "edx4": 0,
+          "eax5": 0,
+          "ebx5": 0,
+          "ecx5": 0,
+          "edx5": 0,
+          "eax6": 0,
+          "ebx6": 0,
+          "ecx6": 16801856,
+          "edx6": 0,
+          "eax7": 0,
+          "ebx7": 0,
+          "ecx7": 0,
+          "edx7": 256,
+          "eax8": 12327,
+          "ebx8": 0,
+          "ecx8": 0,
+          "edx8": 0,
+          "eax9": 0,
+          "ebx9": 0,
+          "ecx9": 0,
+          "edx9": 0,
+          "eax10": 0,
+          "ebx10": 0,
+          "ecx10": 0,
+          "edx10": 0
+        },
+        "maxFrequencyMhz": "4603",
+        "stockFrequencyMhz": "3700"
+      }
+    ],
+    "batteries": [],
+    "version": "5.32.862",
+    "guid": "137ED3BE-8205-466E-8A8D-DA2AAE03F853",
+    "computerName": "I9600K-G2060-A4",
+    "hpet": false,
+    "powerScheme": "Balanced",
+    "gsyncMode": "GSYNC_DISABLED",
+    "freesyncMode": "FREESYNC_DISABLED",
+    "vsyncMode": "VSYNC_DISABLED",
+    "arm": false
+  },
+  "benchmarkRunId": "ff162fe4-faf4-4bdc-a6be-83d16e0c2123",
+  "workload": null,
+  "nameNotes": null,
+  "descriptionNotes": null,
+  "benchmarkRunError": null,
+  "additionalOutputs": [
+    {
+      "testName": "TimeSpyCpuX",
+      "workloadOutput": {
+        "type": "CPU_INSTRUCTION_SET",
+        "value": "AVX2"
+      }
+    }
+  ],
+  "id": 0,
+  "name": null,
+  "installId": null,
+  "useNewUi": false,
+  "description": null,
+  "emulatedWorkload": false
+}
