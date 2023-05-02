@@ -22,7 +22,7 @@
     <div class="heading">Time Spy Extreme Results <span class="suffix">(V1.2)</span></div>
     <div class="flex-row">
       <div class="flex-col w50 no-padding">
-        <div class="procyon-overall-score result-box flex-box tall">
+        <div class="procyon-overall-score result-box flex-row graph-box tall">
           <div class="svg-box">
             <svg width="300" height="200">
             </svg>
@@ -31,25 +31,25 @@
               <p class="positive">+ 0.2% increase since recent</p>
               <div class="details-row best">
                 <div class="details-column">
-                  <div class="details-heading w25">
+                  <div class="details-heading">
                     Leading
                   </div>
-                  <div class="details-value w75 procyon-backgrounded mb05">
+                  <div class="details-value">
                     3560
                   </div>
                 </div>
                 <div class="details-column">
-                  <div class="details-heading w25">
+                  <div class="details-heading">
                     Average
                   </div>
-                  <div class="details-value w75 procyon-backgrounded mb05">
+                  <div class="details-value">
                     3400
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="system-info">
+          <div class="w50">
             <div class="details-row gpu-summary">
               <div class="details-content">
                 <p>Intel(R) UHD Graphics 630</p>
@@ -70,15 +70,11 @@
                 <button><span class="icon small save"></span>Save Results</button>
               </div>
             </div>
-            <!-- <button>Save Result</button> -->
           </div>
         </div>
       </div>
       <div class="flex-col w50">
-        <div class="procyon-result-header keyart">
-          <div class="procyon-result-header-title-container">
-            <h1 id="TEST_NAME"></h1>
-          </div>
+        <div class="keyart">
         </div>
       </div>
     </div>
@@ -99,33 +95,27 @@
             </div>
           </div>
           <div class="systeminfo">
-            <div class=" corners">
-              <div>
-                <div class="systeminfo-advanced run-details-slider">
-                  <div class="flex-row">
-                      <div class="accordion">
-                        <span class="icon plus"></span> CPU
-                      </div>
-                      <div id="SYSTEMINFO_CPU" class="panel">
-                        <!-- Script -->
-                      </div>
-
-                      <div class="accordion">
-                        <span class="icon plus"></span> GPU
-                      </div>
-                      <div id="SYSTEMINFO_GPU" class="panel">
-                        <!-- Script -->
-                      </div>
-
-                      <div class="accordion">
-                        <span class="icon plus"></span> Storage
-                      </div>
-                      <div id="SYSTEMINFO_STORAGE" class="panel">
-                        <!-- Script -->
-                      </div>
-                  </div>
+            <div class="flex-row">
+                <div class="accordion">
+                  <span class="icon plus"></span> CPU
                 </div>
-              </div>
+                <div id="SYSTEMINFO_CPU" class="panel">
+                  <!-- Script -->
+                </div>
+
+                <div class="accordion">
+                  <span class="icon plus"></span> GPU
+                </div>
+                <div id="SYSTEMINFO_GPU" class="panel">
+                  <!-- Script -->
+                </div>
+
+                <div class="accordion">
+                  <span class="icon plus"></span> Storage
+                </div>
+                <div id="SYSTEMINFO_STORAGE" class="panel">
+                  <!-- Script -->
+                </div>
             </div>
           </div>
         </div>

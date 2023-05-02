@@ -322,21 +322,22 @@ body {
   background-color: #1b1d21;
   color: #ededed;
   font-family: "Poppins", sans-serif;
+  font-size: 16px;
 }
 
 button {
+  background: #41434a;
+  border-top: 1px solid #303030;
+  -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
   text-align: center;
   color: #ededed;
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.4px;
   padding: 10px 40px;
   border-radius: 8px;
   text-transform: uppercase;
   min-width: 200px;
-  background: #41434a;
-  border-top: 1px solid #303030;
-  -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
@@ -345,9 +346,42 @@ button:hover {
           box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5);
 }
 
-.small {
-  font-size: 14px;
-  padding-left: 4px;
+.number {
+  font-family: "Roboto Mono", monospace;
+}
+
+.top-indent {
+  padding-top: 72px;
+}
+
+.bottom-indent {
+  padding-bottom: 20px;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.w50 {
+  width: 50%;
+}
+
+.heading {
+  padding: 24px 48px 0;
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+  font-weight: 100;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+.heading .suffix {
+  font-size: 0.75rem;
+  position: absolute;
+  right: 0;
+  bottom: 4px;
 }
 
 .icon {
@@ -356,18 +390,18 @@ button:hover {
   color: #ededed;
   margin-right: 8px;
   background-size: cover;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .icon.small {
-  width: 14px;
-  height: 14px;
+  width: 0.9rem;
+  height: 0.9rem;
 }
 
 .icon.big {
-  width: 50px;
-  height: 50px;
+  width: 3.2rem;
+  height: 3.2rem;
 }
 
 .icon.cpu {
@@ -406,49 +440,10 @@ button:hover {
   background-image: url("./assets/icons/close.png");
 }
 
-.number {
-  font-family: "Roboto Mono", monospace;
-}
-
-.positive {
-  color: #34d8bf !important;
-}
-
-.top-indent {
-  padding-top: 72px;
-}
-
-.bottom-indent {
-  padding-bottom: 20px;
-}
-
-.heading {
-  padding: 32px 48px 0;
-  margin-bottom: 20px;
-  font-size: 20px;
-  font-weight: 100;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  position: relative;
-  display: inline-block;
-}
-
-.heading .suffix {
-  font-size: 12px;
-  position: absolute;
-  right: 0;
-  bottom: 4px;
-}
-
-.nav {
-  position: absolute;
-  right: 0;
-}
-
-.system-info {
-  width: 50%;
-  padding-left: 60px;
-  padding-top: 40px;
+.unit {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.75rem;
+  padding-left: 4px;
 }
 
 .details-row {
@@ -463,33 +458,33 @@ button:hover {
 
 .details-row .details-heading {
   color: #9e9d9d;
-  font-size: 12px;
+  font-size: 0.75rem;
   padding: 8px 0 4px;
 }
 
 .details-row .details-value {
   color: #ededed;
   font-family: "Roboto Mono", monospace;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 400;
 }
 
 .details-row .details-content {
   padding-bottom: 24px;
   color: #ededed;
-  font-size: 14px;
+  font-size: 0.9rem;
 }
 
-.flex-row, .flex-box {
+.flex-row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-size: 14px;
+  font-size: 0.9rem;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
 
-.flex-row.gap, .flex-box.gap {
+.flex-row.gap {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -498,43 +493,45 @@ button:hover {
   padding-bottom: 40px;
 }
 
-.flex-row.gap .flex-gap, .flex-box.gap .flex-gap {
+.flex-row.gap .flex-gap {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
-.flex-row .flex-col.w50, .flex-box .flex-col.w50 {
+.flex-row .flex-col.w50 {
   padding: 0 40px 40px;
 }
 
-.flex-row .flex-col.no-padding, .flex-box .flex-col.no-padding {
+.flex-row .flex-col.no-padding {
   padding-right: 0;
 }
 
-.flex-row .svg-box, .flex-box .svg-box {
+.flex-row .svg-box {
   position: relative;
+  height: 360px;
 }
 
-.flex-row .svg-box .m1, .flex-box .svg-box .m1 {
-  margin-bottom: 40px;
-}
-
-.flex-row .svg-box .main-score, .flex-box .svg-box .main-score {
+.flex-row .svg-box .main-score {
   position: absolute;
   top: 160px;
   left: 52px;
   text-align: center;
+  font-size: 2rem;
 }
 
-.flex-row .svg-box h3, .flex-box .svg-box h3 {
+.flex-row .svg-box .main-score .positive {
+  color: #34d8bf;
+}
+
+.flex-row .svg-box h3 {
   font-weight: 300;
 }
 
-.flex-row .svg-box p, .flex-box .svg-box p {
+.flex-row .svg-box p {
   padding: 8px 0;
   color: #c7c7c7;
-  font-size: 14px;
+  font-size: 0.9rem;
 }
 
 svg line.pointer {
@@ -542,17 +539,10 @@ svg line.pointer {
   stroke-width: 2;
 }
 
-.w100 {
-  width: 100%;
-}
-
-.w50 {
-  width: 50%;
-}
-
-.procyon-result-header {
+.keyart {
   background-image: url("./assets/img/time_spy_extreme_heroimage_1920x1080.jpg");
   background-size: cover;
+  background-position: center;
   min-height: 400px;
   border-radius: 12px;
 }
@@ -561,19 +551,22 @@ svg line.pointer {
   background-color: #2a2c2f;
   border-radius: 12px;
   padding: 32px;
+  overflow: hidden;
 }
 
 .result-box.tall {
   height: 400px;
 }
 
-.result-box .m1 {
-  font-size: 14px;
-  color: #c7c7c7;
+.graph-box {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 50px;
 }
 
-.result-box .main-score {
-  font-size: 32px;
+.graph-box .w50 {
+  padding-left: 60px;
 }
 
 .tile {
@@ -600,24 +593,24 @@ svg line.pointer {
 }
 
 .tile .tile-heading {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #9e9d9d;
 }
 
 .tile .tile-number {
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 300;
   color: #ededed;
 }
 
 .tile .tile-value {
   padding-top: 4px;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .tile .tile-content {
   color: #9e9d9d;
-  font-size: 16px;
+  font-size: 1rem;
   text-transform: uppercase;
 }
 
@@ -645,7 +638,7 @@ svg line.pointer {
 .list-item .list-heading {
   width: 100px;
   color: #9e9d9d;
-  font-size: 12px;
+  font-size: 0.75rem;
   text-transform: uppercase;
   padding-bottom: 2px;
 }
@@ -653,7 +646,7 @@ svg line.pointer {
 .list-item .list-content {
   padding-top: 12px;
   padding-right: 12px;
-  font-size: 16px;
+  font-size: 1rem;
   border-top: 1px solid #34d8bf;
 }
 
@@ -663,7 +656,7 @@ svg line.pointer {
   padding: 12px;
   margin-top: 12px;
   color: #ededed;
-  font-size: 16px;
+  font-size: 1rem;
   border-left: 4px solid #34d8bf;
   background-color: #41434a;
   outline: none;
@@ -721,12 +714,36 @@ svg line.pointer {
 }
 
 .panel dt {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #9e9d9d;
 }
 
 .panel dd {
-  font-size: 16px;
+  font-size: 1rem;
   margin-bottom: 10px;
+}
+
+@media (max-width: 1380px) {
+  .graph-box {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    overflow-y: scroll;
+  }
+  .graph-box .w50 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 750px) {
+  .keyart {
+    display: none;
+  }
+  .tall {
+    height: 800px;
+  }
+  .w50 {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=style.css.map */

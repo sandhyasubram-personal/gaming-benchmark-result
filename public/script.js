@@ -5,7 +5,6 @@ $.getJSON("./test.json", function (data) {
     loadResultDataIn(data);
 });
 
-
 function theDomHasLoaded(e) {
     // when DOM is fully loaded
 }
@@ -19,42 +18,42 @@ function loadResultDataIn(result) {
     loadComponentScores(result.results[0].scores.componentScores);
     loadDetailedScores(result.results[0].scores.componentScores);
     loadSystemInfo(result.systemInfo);
+/** Start D3 Speedometer */
+    let pointerAngle = 86;
+    let pointerLength = 135;
+    let innerRadius = 110;
+    let outerRadius = 130;
 
-    var pointerAngle = 86;
-    var pointerLength = 135;
-    var innerRadius = 110;
-    var outerRadius = 130;
+    let tau = 2 * Math.PI; // http://tauday.com/tau-manifesto
 
-    var tau = 2 * Math.PI; // http://tauday.com/tau-manifesto
-
-    var svg = d3.select("svg"),
+    let svg = d3.select("svg"),
         width = +svg.attr("width"),
         height = +svg.attr("height"),
         g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 1.5 + ")");
 
-    var pie = d3.pie()
+    let pie = d3.pie()
         .sort(null)
         .startAngle(-tau/3+0.2)
         .endAngle(tau/3-0.2)
         .padAngle(0);
 
-    var segments = 50;
+    let segments = 50;
 
-    var color = d3.scaleLinear().domain([0,segments-1]).range(['#dc4740','#34d8bf']).interpolate(d3.interpolateRgb);
+    let color = d3.scaleLinear().domain([0,segments-1]).range(['#dc4740','#34d8bf']).interpolate(d3.interpolateRgb);
 
-    var arc = d3.arc()
+    let arc = d3.arc()
         .innerRadius(innerRadius)
         .outerRadius(outerRadius);
 
-    var path = g.selectAll("path")
+    let path = g.selectAll("path")
         .data(pie(d3.range(segments).map(function (){return 1;})))
     .enter().append("path")
         .attr("fill", function(d, i) { return color(i); })
         .attr("d", arc);
 
-    var pointer = g.append("g").attr("class","pointer");
+    let pointer = g.append("g").attr("class","pointer");
 
-    var line = pointer.append("line")
+    let line = pointer.append("line")
     .attr("x1",0).attr("y1",10)
     .attr("x2",function(){
         return -pointerLength*Math.cos(pointerAngle * tau/200);
@@ -63,26 +62,14 @@ function loadResultDataIn(result) {
         return -pointerLength*Math.sin(pointerAngle * tau/200);
     })
     .attr("class","pointer");
+/** End D3 Speedometer */
 
     $('.accordion').click(function(index){
         $(this).toggleClass('active');
         $(this).next().toggleClass('visible');
         $(this).find('.icon').toggleClass('rotate');
     })
-
-    // for (i = 0; i < acc.length; i++) {
-    // acc[i].addEventListener("click", function() {
-    //     this.toggle("active");
-    //     var icon = this.find('icon');
-    //     var panel = this.nextElementSibling;
-    //     console.log(icon);
-    //     panel.classList.toggle("visible");
-    //     // var icon = this
-
-    // });
-    // }
 }
-
 
 function loadOverallScore(result, systemInfo) {
     $('.procyon-overall-score h2').html('Time Spy Extreme' + ' score');
@@ -116,7 +103,7 @@ function loadComponentScores(componentScores) {
     componentScores.forEach(score => {
         componentScoreString +=
             `
-            <div class="result-box w50  p1">
+            <div class="result-box w50">
                  <h3 class="no-border">${score.baseType}</h3>
                  <h2 class="center no-border">${score.uiValue}</h2>
             </div>
@@ -148,7 +135,7 @@ function loadDetailedScores(componentScores) {
                         <h4>${componentRef[subScore.baseType]}</h4>
                     </div>
                     <div class="tile-value number">
-                        <p>${subScore.uiValue}<span class="small">${subScore.unit}</span></p>
+                        <p>${subScore.uiValue}<span class="unit">${subScore.unit}</span></p>
                     </div>
                 </div>
                 `;
@@ -157,7 +144,7 @@ function loadDetailedScores(componentScores) {
         componentScoreString +=
             `
             <div class="flex-gap">
-                <div class="result-box procyon-subscore">
+                <div class="result-box">
                     <div class="tile">
                         <div class="tile-icon">
                             <span class="icon color big `   + componentRef[score.type].icon +   ` cpu"></span>
@@ -227,9 +214,9 @@ function loadSystemInfo(systemInfo) {
         gpu.displays.forEach( (display, i) => {
             displayString +=
                 `
-                <dl class="result-systeminfo-list-details clearfix">
-                        <dt>Display ${i+1}</dt>
-                        <dd>${display.deviceName} (${display.resolution})</dd>
+                <dl>
+                    <dt>Display ${i+1}</dt>
+                    <dd>${display.deviceName} (${display.resolution})</dd>
                 </dl>
                 `;
         });
@@ -269,9 +256,7 @@ function loadSystemInfo(systemInfo) {
                     <dd>${gpu.clockSpeed.memory.currentMhz} MHz</dd>
                 </dl>
 
-                <div class="systeminfo-display-list">
-                    ${displayString}
-                </div>
+                ${displayString}
             </div>
             `;
     });
@@ -283,18 +268,18 @@ function loadSystemInfo(systemInfo) {
             `
             <div>
                 <dl class="panel-list">
-                <dt>Drive ${i+1}</dt>
-                <dd class="pr15">${storage.driveName}</dd>
+                    <dt>Drive ${i+1}</dt>
+                    <dd>${storage.driveName}</dd>
                 </dl>
                 <div class="storage-info">
-                <dl class="result-systeminfo-list-details clearfix pl1">
-                    <dt class="">Drive Model</dt>
-                    <dd class="">${storage.driveModel}</dd>
-                </dl>
-                <dl class="result-systeminfo-list-details clearfix pl1">
-                    <dt class="">Drive Type</dt>
-                    <dd class="">${storage.driveType}</dd>
-                </dl>
+                    <dl>
+                        <dt>Drive Model</dt>
+                        <dd>${storage.driveModel}</dd>
+                    </dl>
+                    <dl>
+                        <dt>Drive Type</dt>
+                        <dd>${storage.driveType}</dd>
+                    </dl>
                 </div>
             </div>
             `;

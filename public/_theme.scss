@@ -13,15 +13,20 @@ $theme-bright: #00ffd9;
 $theme-font: 'Poppins', sans-serif;
 $theme-numeric: 'Roboto Mono', monospace;
 
-$font-xl: 50px;
-$font-large: 32px;
-$font-medium: 20px;
-$font-regular: 16px;
-$font-small: 14px;
-$font-xs: 12px;
+$font-default: 16px;
+
+$font-xl: 3.2rem;
+$font-large: 2rem;
+$font-medium: 1.25rem;
+$font-regular: 1rem;
+$font-small: 0.9rem;
+$font-xs: 0.75rem;
 
 $radius-default: 12px;
 $spacing-large: 40px;
 $spacing-default: 32px;
 $spacing-medium: 16px;
 $spacing-small: 12px;
+
+$breakpoint-large: 1380px;
+$breakpoint-medium: 750px;

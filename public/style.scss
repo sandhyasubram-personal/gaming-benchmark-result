@@ -3,14 +3,15 @@
 
 body {
     background-color: $theme-dark;
-    // background-image: url('./assets/img/time_spy_extreme_heroimage_1920x1080.jpeg');
-    // background-size: cover;
-    // background-position: center;
     color: $theme-light;
     font-family: $theme-font;
+    font-size: $font-default;
 }
 
 button {
+    background: $theme-color;
+    border-top: 1px solid $theme-lighter;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
     color: $theme-light;
     font-size: $font-xs;
@@ -19,9 +20,6 @@ button {
     border-radius: 8px;
     text-transform: uppercase;
     min-width: 200px;
-    background: $theme-color;
-    border-top: 1px solid $theme-lighter;
-    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
 
     &:hover {       
         background: $theme-color-light;
@@ -29,9 +27,42 @@ button {
     }
 }
 
-.small {
-    font-size: $font-small;
-    padding-left: 4px;
+.number {
+    font-family: $theme-numeric;
+}
+
+.top-indent {
+    padding-top: 72px;
+}
+
+.bottom-indent {
+    padding-bottom: 20px;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.heading {
+    padding: 24px 48px 0;
+    margin-bottom: 20px;
+    font-size: $font-medium;
+    font-weight: 100;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+
+    .suffix {
+        font-size: $font-xs;
+        position: absolute;
+        right: 0;
+        bottom: 4px;
+    }
 }
 
 .icon {
@@ -90,49 +121,10 @@ button {
     }
 }
 
-.number {
-    font-family: $theme-numeric;
-}
-
-.positive {
-    color: $theme-green !important;
-}
-
-.top-indent {
-    padding-top: 72px;
-}
-
-.bottom-indent {
-    padding-bottom: 20px;
-}
-
-.heading {
-    padding: 32px 48px 0;
-    margin-bottom: 20px;
-    font-size: $font-medium;
-    font-weight: 100;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    position: relative;
-    display: inline-block;
-
-    .suffix {
-        font-size: $font-xs;
-        position: absolute;
-        right: 0;
-        bottom: 4px;
-    }
-}
-
-.nav {
-    position: absolute;
-    right: 0;
-}
-
-.system-info {
-    width: 50%;
-    padding-left: 60px;
-    padding-top: 40px;
+.unit {
+    font-family: $theme-font;
+    font-size: $font-xs;
+    padding-left: 4px;
 }
 
 .details-row {
@@ -160,7 +152,7 @@ button {
     }
 }
 
-.flex-row, .flex-box {
+.flex-row {
     display: flex;
     font-size: $font-small;
     flex-wrap: wrap ;
@@ -188,17 +180,18 @@ button {
 
     .svg-box {
         position: relative;
-
-        .m1 {
-            margin-bottom: 40px;
-        }
+        height: 360px;
 
         .main-score {
             position: absolute;
             top: 160px;
             left: 52px;
             text-align: center;
+            font-size: $font-large;
 
+            .positive {
+                color: $theme-green;
+            }
         }
 
         h3 {
@@ -221,17 +214,10 @@ svg {
     }
 }
 
-.w100 {
-    width: 100%;
-}
-
-.w50 {
-    width: 50%;
-}
-
-.procyon-result-header {
+.keyart {
     background-image: url('./assets/img/time_spy_extreme_heroimage_1920x1080.jpg');
     background-size: cover;
+    background-position: center;
     min-height: 400px;
     border-radius: $radius-default;
 }
@@ -240,18 +226,19 @@ svg {
     background-color: $theme-darker;
     border-radius: $radius-default;
     padding: $spacing-default;
+    overflow: hidden;
 
     &.tall {
         height: 400px;
     }
+}
 
-    .m1 {
-        font-size: $font-small;
-        color: $theme-grey;
-    }
+.graph-box {
+    align-items: center;
+    padding-top: 50px;
 
-    .main-score {
-        font-size: $font-large;
+    .w50 {
+        padding-left: 60px;
     }
 }
 
@@ -383,7 +370,33 @@ svg {
         margin-bottom: 10px;
     }
 }
+
+//Responsive Media Queries - In Progress
+@media (max-width: $breakpoint-large) {
+    .graph-box {
+        justify-content: center;
+        overflow-y: scroll;
+
+        .w50 {
+            width: 100%;
+        }
+    }
+}
   
+  
+@media (max-width: $breakpoint-medium) {
+    .keyart {
+        display: none;
+    }
+
+    .tall {
+        height: 800px;
+    }
+
+    .w50 {
+        width: 100%;
+    }
+}
   
 
 
