@@ -12,15 +12,15 @@
         "overallScore": {
           "type": "TIME_SPY_OVERALL_SCORE_X",
           "score": 3430.0,
-          "uiValue": "3 430",
+          "uiValue": "3430",
           "unit": ""
         },
         "componentScores": [
           {
             "type": "TIME_SPY_GRAPHICS_SCORE_X",
-            "baseType": "GRAPHICS_SCORE",
+            "baseType": "GRAPHICS SCORE",
             "score": 3541.0,
-            "uiValue": "3 541",
+            "uiValue": "3541",
             "unit": "",
             "subScores": [
               {
@@ -45,9 +45,9 @@
           },
           {
             "type": "TIME_SPY_CPU_SCORE_X",
-            "baseType": "CPU_SCORE",
+            "baseType": "CPU SCORE",
             "score": 2915.0,
-            "uiValue": "2 915",
+            "uiValue": "2915",
             "unit": "",
             "subScores": [
               {

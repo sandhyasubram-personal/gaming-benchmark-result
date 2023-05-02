@@ -5,6 +5,7 @@ $.getJSON("./test.json", function (data) {
     loadResultDataIn(data);
 });
 
+
 function theDomHasLoaded(e) {
     // when DOM is fully loaded
 }
@@ -19,23 +20,80 @@ function loadResultDataIn(result) {
     loadDetailedScores(result.results[0].scores.componentScores);
     loadSystemInfo(result.systemInfo);
 
+    var pointerAngle = 86;
+    var pointerLength = 135;
+    var innerRadius = 110;
+    var outerRadius = 130;
 
-    $('#TEST_NAME').html("Time Spy Extreme");
+    var tau = 2 * Math.PI; // http://tauday.com/tau-manifesto
+
+    var svg = d3.select("svg"),
+        width = +svg.attr("width"),
+        height = +svg.attr("height"),
+        g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 1.5 + ")");
+
+    var pie = d3.pie()
+        .sort(null)
+        .startAngle(-tau/3+0.2)
+        .endAngle(tau/3-0.2)
+        .padAngle(0);
+
+    var segments = 50;
+
+    var color = d3.scaleLinear().domain([0,segments-1]).range(['#dc4740','#34d8bf']).interpolate(d3.interpolateRgb);
+
+    var arc = d3.arc()
+        .innerRadius(innerRadius)
+        .outerRadius(outerRadius);
+
+    var path = g.selectAll("path")
+        .data(pie(d3.range(segments).map(function (){return 1;})))
+    .enter().append("path")
+        .attr("fill", function(d, i) { return color(i); })
+        .attr("d", arc);
+
+    var pointer = g.append("g").attr("class","pointer");
+
+    var line = pointer.append("line")
+    .attr("x1",0).attr("y1",10)
+    .attr("x2",function(){
+        return -pointerLength*Math.cos(pointerAngle * tau/200);
+    })
+    .attr("y2",function(){
+        return -pointerLength*Math.sin(pointerAngle * tau/200);
+    })
+    .attr("class","pointer");
+
+    $('.accordion').click(function(index){
+        $(this).toggleClass('active');
+        $(this).next().toggleClass('visible');
+        $(this).find('.icon').toggleClass('rotate');
+    })
+
+    // for (i = 0; i < acc.length; i++) {
+    // acc[i].addEventListener("click", function() {
+    //     this.toggle("active");
+    //     var icon = this.find('icon');
+    //     var panel = this.nextElementSibling;
+    //     console.log(icon);
+    //     panel.classList.toggle("visible");
+    //     // var icon = this
+
+    // });
+    // }
 }
+
 
 function loadOverallScore(result, systemInfo) {
     $('.procyon-overall-score h2').html('Time Spy Extreme' + ' score');
-    $('.procyon-overall-score .main-score h3').html(result.scores.overallScore.uiValue);
+    $('.procyon-overall-score h3').html(result.scores.overallScore.uiValue);
 
     let gpuString = '';
     systemInfo.gpu.forEach(gpu => {
         gpuString +=
             `
-            <div class="flex-col w25">
-                <p class="pl0">GPU:</p>
-            </div>
-            <div class="flex-col w75 procyon-backgrounded mb05">
-                <p>${gpu.name}</p>
+            <div class="details-content">
+                <p> <span class="icon gpu"></span> ${gpu.name}</p>
             </div>
             `;
     });
@@ -45,11 +103,8 @@ function loadOverallScore(result, systemInfo) {
     systemInfo.cpu.forEach(cpu => {
         cpuString +=
             `
-            <div class="flex-col w25">
-                <p class="pl0">CPU:</p>
-            </div>
-            <div class="flex-col w75 procyon-backgrounded mb05">
-                <p>${cpu.name}</p>
+            <div class="details-content">
+                <p> <span class="icon cpu"></span> ${cpu.name}</p>
             </div>
             `;
     });
@@ -61,9 +116,9 @@ function loadComponentScores(componentScores) {
     componentScores.forEach(score => {
         componentScoreString +=
             `
-            <div class="w100 procyon-result-box flex-col-stretch p1">
-                 <h3 class="no-border pb05">${score.baseType}</h3>
-                 <h2 class="center no-border pt05">${score.uiValue}</h2>
+            <div class="result-box w50  p1">
+                 <h3 class="no-border">${score.baseType}</h3>
+                 <h2 class="center no-border">${score.uiValue}</h2>
             </div>
             `;
     });
@@ -72,19 +127,28 @@ function loadComponentScores(componentScores) {
 
 function loadDetailedScores(componentScores) {
     let componentScoreString = '';
+    let componentRef = {
+        'TIME_SPY_GRAPHICS_SCORE_X' : {
+            icon : 'gpu'
+        },
+        'TIME_SPY_CPU_SCORE_X' : {
+            icon : 'cpu'
+        },
+        'GT_1' : 'Test 1',
+        'GT_2' : 'Test 2',
+        'CPU_TEST_TIME' : 'Avg Simulation Time per Frame'
+    };
     componentScores.forEach(score => {
         let subScoreString = '';
         score.subScores.forEach( subScore => {
             subScoreString +=
                 `
-                <div class="w100">
-                    <div class="flex-row w100 procyon-deepsubscore pb05">
-                        <div class="w60 pr05">
-                            <h4>${subScore.baseType}</h4>
-                        </div>
-                        <div class="w40">
-                            <p>${subScore.uiValue} ${subScore.unit} </p>
-                        </div>
+                <div class="tile-details">
+                    <div class="tile-heading">
+                        <h4>${componentRef[subScore.baseType]}</h4>
+                    </div>
+                    <div class="tile-value number">
+                        <p>${subScore.uiValue}<span class="small">${subScore.unit}</span></p>
                     </div>
                 </div>
                 `;
@@ -92,16 +156,25 @@ function loadDetailedScores(componentScores) {
 
         componentScoreString +=
             `
-            <div class="flex-col-start w33 p05 plr1">
-                <div class="flex-row procyon-subscore pb05">
-                    <div class="w60 pr05">
-                        <h3>${score.baseType}</h3>
-                    </div>
-                    <div class="w40">
-                        <p>${score.uiValue}</p>
+            <div class="flex-gap">
+                <div class="result-box procyon-subscore">
+                    <div class="tile">
+                        <div class="tile-icon">
+                            <span class="icon color big `   + componentRef[score.type].icon +   ` cpu"></span>
+                        </div>
+                        <div class="tile-details">
+                            <div class="tile-heading">
+                                <h3>${score.baseType}</h3>
+                            </div>
+                            <div class="tile-number number">
+                                ${score.uiValue}
+                            </div>
+                        </div>
+                    </div>            
+                    <div class="tile spread">
+                        ${subScoreString}
                     </div>
                 </div>
-                ${subScoreString}
             </div>
             `;
     });
@@ -109,14 +182,14 @@ function loadDetailedScores(componentScores) {
 }
 
 function loadSystemInfo(systemInfo) {
-    let cpuString = `<h3 class="border-bottom pb05"><i class="icon icon-cpu fm-icon mr05"></i>CPU</h3>`;
+    let cpuString = ``;
     systemInfo.cpu.forEach( cpu => {
         cpuString +=
             `
-            <div each={opts.run.systemInfo.cpu} class="mb05">
-                    <dl class="result-systeminfo-list-details clearfix">
+            <div each={opts.run.systemInfo.cpu}>
+                    <dl class="panel-list">
 
-                      <dt>CPU</dt>
+                      <dt>Name</dt>
                       <dd>${cpu.name}</dd>
 
                       <dt>Codename</dt>
@@ -148,7 +221,7 @@ function loadSystemInfo(systemInfo) {
     });
     $('#SYSTEMINFO_CPU').html(cpuString);
 
-    let gpuString = `<h3 class="border-bottom pb05"><i class="icon icon-gpu mr05"></i>GPU</h3>`;
+    let gpuString = ``;
     systemInfo.gpu.forEach( gpu => {
         let displayString = '';
         gpu.displays.forEach( (display, i) => {
@@ -163,67 +236,67 @@ function loadSystemInfo(systemInfo) {
 
         gpuString +=
             `
-            <div class="mb05">
-                    <dl class="result-systeminfo-list-details clearfix">
-                      <dt>GPU</dt>
-                      <dd>${gpu.name}</dd>
+            <div>
+                <dl class="panel-list">
+                    <dt>GPU</dt>
+                    <dd>${gpu.name}</dd>
 
-                      <dt>Memory</dt>
-                      <dd>${gpu.memory.memoryAmountMb} MB ${gpu.memory.memoryType}</dd>
+                    <dt>Memory</dt>
+                    <dd>${gpu.memory.memoryAmountMb} MB ${gpu.memory.memoryType}</dd>
 
-                      <dt>Available VRAM</dt>
-                      <dd>${gpu.memory.availableVram} MB</dd>
+                    <dt>Available VRAM</dt>
+                    <dd>${gpu.memory.availableVram} MB</dd>
 
-                      <dt>Code Name</dt>
-                      <dd>${gpu.codeName}</dd>
+                    <dt>Code Name</dt>
+                    <dd>${gpu.codeName}</dd>
 
-                      <dt>Manufacturer</dt>
-                      <dd>${gpu.pciDeviceId.vendorName} / ${gpu.pciDeviceId.subvendorName}</dd>
+                    <dt>Manufacturer</dt>
+                    <dd>${gpu.pciDeviceId.vendorName} / ${gpu.pciDeviceId.subvendorName}</dd>
 
-                      <dt>Manufacturing process</dt>
-                      <dd>${gpu.manufacturingProcess} NM</dd>
-                      <dt>Driver Version</dt>
-                      <dd>${gpu.driverInfo.driverVersion}</dd>
+                    <dt>Manufacturing process</dt>
+                    <dd>${gpu.manufacturingProcess} NM</dd>
+                    <dt>Driver Version</dt>
+                    <dd>${gpu.driverInfo.driverVersion}</dd>
 
-                      <dt>Clock frequency</dt>
-                      <dd>${gpu.clockSpeed.gpu.currentMhz} MHz</dd>
+                    <dt>Clock frequency</dt>
+                    <dd>${gpu.clockSpeed.gpu.currentMhz} MHz</dd>
 
-                      <dt>Boost</dt>
-                      <dd>${gpu.clockSpeed.boost.currentMhz} MHz
-                      </dd>
+                    <dt>Boost</dt>
+                    <dd>${gpu.clockSpeed.boost.currentMhz} MHz
+                    </dd>
 
-                      <dt>Memory clock frequency</dt>
-                      <dd>${gpu.clockSpeed.memory.currentMhz} MHz</dd>
-                    </dl>
+                    <dt>Memory clock frequency</dt>
+                    <dd>${gpu.clockSpeed.memory.currentMhz} MHz</dd>
+                </dl>
 
-                    <div class="systeminfo-display-list">
-                      ${displayString}
-                    </div>
-                  </div>
+                <div class="systeminfo-display-list">
+                    ${displayString}
+                </div>
+            </div>
             `;
     });
     $('#SYSTEMINFO_GPU').html(gpuString);
 
-    let storageString = `<h3 class="border-bottom pb05"><i class="icon icon-download fm-icon mr05"></i>Storage</h3>`;
+    let storageString = ``;
     systemInfo.storage.forEach( (storage, i) => {
         storageString +=
             `
-            <div class="systeminfo-storage-list">
-                      <dl class="result-systeminfo-list-details clearfix">
-                        <dt>Drive ${i+1}</dt>
-                        <dd class="pr15">${storage.driveName}</dd>
-                      </dl>
-                      <div class="storage-info">
-                        <dl class="result-systeminfo-list-details clearfix pl1">
-                          <dt class="">Drive Model</dt>
-                          <dd class="">${storage.driveModel}</dd>
-                        </dl>
-                        <dl class="result-systeminfo-list-details clearfix pl1">
-                          <dt class="">Drive Type</dt>
-                          <dd class="">${storage.driveType}</dd>
-                        </dl>
-                      </div>
-                  </div>
+            <div>
+                <dl class="panel-list">
+                <dt>Drive ${i+1}</dt>
+                <dd class="pr15">${storage.driveName}</dd>
+                </dl>
+                <div class="storage-info">
+                <dl class="result-systeminfo-list-details clearfix pl1">
+                    <dt class="">Drive Model</dt>
+                    <dd class="">${storage.driveModel}</dd>
+                </dl>
+                <dl class="result-systeminfo-list-details clearfix pl1">
+                    <dt class="">Drive Type</dt>
+                    <dd class="">${storage.driveType}</dd>
+                </dl>
+                </div>
+            </div>
             `;
     });
     $('#SYSTEMINFO_STORAGE').html(storageString);

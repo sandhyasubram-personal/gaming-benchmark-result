@@ -1,14 +1,20 @@
 # UL Benchmarks technical test
 
-### Your task
+### Task - Redesign Gaming Benchmark Result Page
 
-Benchmark scores are the most important infomation of a benchmark runs. They allow the user to compare their system performance to millions of benchmark runs. It's crucial that they are presented in a meaningful and readable way.
+I have redesigned the sample result page so it is descriptive and engaging to the user. Given the time frame, I defined a scope for prompt delivery. 
+Listed below are a few of the tasks I have completed as part of the scope,
+- Used D3 to display the score in an effective manner
+- Compartmentalised data to reduce cognitive load
+- Employed a heuristic approach to present information to the user
+- Applied vibrant colours to make the interface lively
+- Structured the stylesheet and used SCSS for uncomplicated maintenance and easy redesign
 
-In this task, the goal is to modify the default result page into a more presentable way. There are no wrong answers - the sky is your limit. You can use any technology for the task. We highly value clean code and the ability to create smart and creative solutions (eg. numbers, charts, colors, interactivity, etc.).
+The following tasks are in the pipeline and excluded from the present scope due to time constraints,
+- Design an icon set (I have currently used graphic images in place of icons)
+- Design for mobile (The page is designed for desktop and is only partially responsive)
+- Refactor script for improved efficiency
 
-The scores data are provided under "results[n].scores" in public\test.json file.
-
-There is an end result example at the root of the project. You can ignore the missing monitoring section as it is not available for this task.
 
 ### How to run:
 
